@@ -9,6 +9,7 @@ export default defineConfig({
     tamaguiPlugin({
       config: './tamagui.config.ts',
       components: ['tamagui'],
+      useReactNativeWebLite: true,
     }),
   ],
 })

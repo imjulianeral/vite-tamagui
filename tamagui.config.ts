@@ -1,18 +1,12 @@
-import { shorthands } from '@tamagui/shorthands'
-import { themes, tokens } from '@tamagui/theme-base'
-import { createFont, createTamagui } from 'tamagui'
+import { config } from '@tamagui/config-base'
+import { createTamagui } from '@tamagui/web'
 
-export default createTamagui({
-  themes,
-  tokens,
-  shorthands,
-  fonts: {
-    body: createFont({
-      family: 'Arial',
-      size: { 4: 14 },
-      letterSpacing: {},
-      lineHeight: { 4: 16 },
-      weight: {},
-    }),
-  },
-})
+const tamaConf = createTamagui(config)
+
+export type Conf = typeof tamaConf
+
+declare module '@tamagui/web' {
+  interface TamaguiCustomConfig extends Conf {}
+}
+
+export default tamaConf
